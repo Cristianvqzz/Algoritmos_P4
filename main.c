@@ -76,25 +76,26 @@ void crearMonticulo(pmonticulo m,int v[],int n) {
 
 void flotar(pmonticulo m,int i) {
 
-    while(i > 1 && m->vector[i/2] < m->vector[i]) {
-        intercambiar(&m->vector[i/2],&m->vector[i]);
-        i = i/2;;
+    while(i > 0 && m->vector[i-1/2] > m->vector[i]) {
+        intercambiar(&m->vector[i-1/2],&m->vector[i]);
+        i = i-1/2;
     }
 }
 void hundir(pmonticulo m,int i) {
+    int hi,hd,j;
 
-    int hi = 2 * i + 1;
-    int hd = 2 * i + 2;
-    int j = i;
+    do {
+        hi = 2 * i + 1;
+        hd = 2 * i + 2;
+        j = i;
 
-    if (hd < m->ultimo && m->vector[hd] > m->vector[i])
-        i = hd;
-    else if (hi < m->ultimo && m->vector[hi] > m->vector[i])
-        i = hi;
-    while(j!=i) {
+        if (hd < m->ultimo && m->vector[hd] > m->vector[i])
+            i = hd;
+        if (hi < m->ultimo && m->vector[hi] > m->vector[i])
+            i = hi;
         intercambiar(&m->vector[hi],&m->vector[i]);
-        j++;
-    }
+    }while (i != j);
+
 }
 
 double microsegundos() {
