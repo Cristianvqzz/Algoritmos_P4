@@ -29,6 +29,9 @@ void ascendente(int v[], int n);
 void descendente(int v[], int n);
 void intercambiar(int* i,int* j);
 
+double ord_time(int n,int k,void (*inicializar) (int v[],int n));
+void tabla(int n,int k,void (*inicializar) (int v[],int n),void (*ordenar) (int v[],int n));
+
 int main() {
 
 }
@@ -109,7 +112,7 @@ void OrdenarPorMonticulos(int v[],int n) {
     iniMonticulo(m);
     crearMonticulo(m,v,n);
 
-    for(int i = 0; i < n; i++) {
+    for(i = 0; i < n; i++) {
         v[i] = consultarMenor(m);
         quitarMenor(m);
     }
@@ -119,4 +122,71 @@ void intercambiar(int* i,int* j) {
     *i = *j;
     *j = temp;
 }
+double ord_time(int n,int k,void (*inicializar) (int v[],int n)) {
+    double t,t1,t2,ta,tb;
+    int *v;
+    int i;
 
+    v = malloc(n*sizeof(int));
+    inicializar(v,n);
+    t1 = microsegundos();
+    OrdenarPorMonticulos(v,n);
+    t2 = microsegundos();
+    t = t2 - t1;
+
+    if (t < 500) {
+        printf("%-12d*",k);
+        ta = microsegundos();
+        for (i = 0; i < k; i++) {
+            inicializar(v,n);
+            OrdenarPorMonticulos(v,n);
+        }
+        tb = microsegundos();
+        t1 = tb - ta;
+        if (t1 < 500) {
+            printf("k no valida t1 < 500 \n");
+            free(v);
+            return 0.0;
+        }
+        ta = microsegundos();
+        for (i = 0; i < k; i++) {
+            inicializar(v,n);
+        }
+        tb = microsegundos();
+        t2 = tb - ta;
+        t = t1 - t2;
+        if (t < 500) {
+            printf("k no valida t < 500 \n");
+            free(v);
+            return 0.0;
+        }
+        t /= k;
+    }else {
+        printf("%-12d*",1);
+    }
+    free(v);
+    return t;
+}
+void tabla_ord(int n,int k,void (*inicializar) (int v[],int n)) {
+    double t;
+    double sobrestimada,exacta,subestimada;
+
+    if(inicializar == ascendente) {
+        sobrestimada = 0.0;
+        exacta = 0.0;
+        subestimada = 0.0;
+    }else if(inicializar == descendente) {
+        sobrestimada = 0.0;
+        exacta = 0.0;
+        subestimada = 0.0;
+    }else if(inicializar == aleatorio) {
+        sobrestimada = 0.0;
+        exacta = 0.0;
+        subestimada = 0.0;
+    }else {
+        printf("Inicializacion no valida\n");
+        return;
+    }
+    t = ord_time(n,k,inicializar);
+    printf("%12d%15.3f%15.7f%15.7f%15.7f\n",n,t,t/subestimada,t/exacta,t/sobrestimada);
+}
