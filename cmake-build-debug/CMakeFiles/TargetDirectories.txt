@@ -1,0 +1,3 @@
+/home/daortiz/CLionProjects/Algoritmos_P4/cmake-build-debug/CMakeFiles/Algoritmos_P4.dir
+/home/daortiz/CLionProjects/Algoritmos_P4/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/daortiz/CLionProjects/Algoritmos_P4/cmake-build-debug/CMakeFiles/rebuild_cache.dir
