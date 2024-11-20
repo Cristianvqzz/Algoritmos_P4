@@ -8,3 +8,4 @@ add_executable(Algoritmos_P4
         tiempos.c
         monticulos.h
         monticulos.c)
+target_link_libraries(Algoritmos_P4 m)

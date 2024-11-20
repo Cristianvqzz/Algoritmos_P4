@@ -45,7 +45,7 @@ double ord_time_bajo(int n,int k,void (*inicializar) (int v[],int n),void (*orde
         return t;
     }
     free(v);
-    return t /= k;
+    return t / k;
 }
 double ord_time(int n,int k,void (*inicializar) (int v[],int n),void (*ordenar) (int v[],int n)) {
     double t,t1,t2;
@@ -71,6 +71,7 @@ double insert_time_bajo(int n,int k,void (*inicializar) (int v[],int n)) {
     int *v;
     pmonticulo m;
 
+    m = malloc(sizeof(struct monticulo));
     v = malloc(n*sizeof(int));
 
     ta = microsegundos();
@@ -86,6 +87,7 @@ double insert_time_bajo(int n,int k,void (*inicializar) (int v[],int n)) {
     if (t1 < 500) {
         printf("k no valida t1 < 500 \n");
         free(v);
+        free(m);
         return t1;
     }
     ta = microsegundos();
@@ -99,10 +101,12 @@ double insert_time_bajo(int n,int k,void (*inicializar) (int v[],int n)) {
     if (t < 500) {
         printf("k no valida t < 500 \n");
         free(v);
+        free(m);
         return t;
     }
     free(v);
-    return t /= k;
+    free(m);
+    return t / k;
 }
 double insert_time(int n,int k,void (*inicializar) (int v[],int n)) {
     double t,t1,t2;
@@ -110,6 +114,8 @@ double insert_time(int n,int k,void (*inicializar) (int v[],int n)) {
     pmonticulo m;
 
     v = malloc(n*sizeof(int));
+    m = malloc(sizeof(struct monticulo));
+
     inicializar(v,n);
     iniMonticulo(m);
     t1 = microsegundos();
@@ -120,6 +126,7 @@ double insert_time(int n,int k,void (*inicializar) (int v[],int n)) {
     t = t2 - t1;
 
     free(v);
+    free(m);
 
     if (t < 500) {
         printf("%-12d*",k);
@@ -135,6 +142,7 @@ double crear_time_bajo(int n,int k,void (*inicializar) (int v[],int n)) {
     pmonticulo m;
     //Preguntar si es necesacio inimonticulo para crear
     v = malloc(n*sizeof(int));
+    m = malloc(sizeof(struct monticulo));
 
     ta = microsegundos();
     for (int i = 0; i < k; i++) {
@@ -149,6 +157,7 @@ double crear_time_bajo(int n,int k,void (*inicializar) (int v[],int n)) {
     if (t1 < 500) {
         printf("k no valida t1 < 500 \n");
         free(v);
+        free(m);
         return t1;
     }
     ta = microsegundos();
@@ -162,10 +171,12 @@ double crear_time_bajo(int n,int k,void (*inicializar) (int v[],int n)) {
     if (t < 500) {
         printf("k no valida t < 500 \n");
         free(v);
+        free(m);
         return t;
     }
     free(v);
-    return t /= k;
+    free(m);
+    return t / k;
 }
 double crear_time(int n,int k,void (*inicializar) (int v[],int n)) {
     double t,t1,t2;
@@ -173,6 +184,8 @@ double crear_time(int n,int k,void (*inicializar) (int v[],int n)) {
     pmonticulo m;
 
     v = malloc(n*sizeof(int));
+    m = malloc(sizeof(struct monticulo));
+
     inicializar(v,n);
     //iniMonticulo(m);
     t1 = microsegundos();
@@ -183,6 +196,7 @@ double crear_time(int n,int k,void (*inicializar) (int v[],int n)) {
     t = t2 - t1;
 
     free(v);
+    free(m);
 
     if (t < 500) {
         printf("%-12d*",k);

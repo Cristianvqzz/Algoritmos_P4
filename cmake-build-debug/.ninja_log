@@ -1,4 +1,6 @@
 # ninja log v6
-222	1250	1732095672836625854	CMakeFiles/Algoritmos_P4.dir/monticulos.c.o	3af7c6abc73502bc
+0	73	1732096203735154317	CMakeFiles/Algoritmos_P4.dir/main.c.o	70b4b99b0a9e2c8e
 221	1250	1732095672835626354	CMakeFiles/Algoritmos_P4.dir/tiempos.c.o	63737f97d961d679
-0	44	1732095997216038403	CMakeFiles/Algoritmos_P4.dir/main.c.o	70b4b99b0a9e2c8e
+222	1250	1732095672836625854	CMakeFiles/Algoritmos_P4.dir/monticulos.c.o	3af7c6abc73502bc
+1	59	1732096253248110567	build.ninja	c7938afce1bc2033
+0	86	1732096253259105027	Algoritmos_P4	fdf16c889983a212

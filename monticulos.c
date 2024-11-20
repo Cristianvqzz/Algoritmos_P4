@@ -71,7 +71,7 @@ void crearMonticulo(pmonticulo m,int v[],int n) {
 void OrdenarPorMonticulos(int v[],int n) {
     pmonticulo m;
     int i;
-
+    m = malloc(sizeof (struct monticulo));
     iniMonticulo(m);
     crearMonticulo(m,v,n);
 
@@ -79,4 +79,5 @@ void OrdenarPorMonticulos(int v[],int n) {
         v[i] = consultarMenor(m);
         quitarMenor(m);
     }
+    free(m);
 }

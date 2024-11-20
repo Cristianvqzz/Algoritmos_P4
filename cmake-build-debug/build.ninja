@@ -77,6 +77,7 @@ build CMakeFiles/Algoritmos_P4.dir/monticulos.c.o: C_COMPILER__Algoritmos_P4_uns
 
 build Algoritmos_P4: C_EXECUTABLE_LINKER__Algoritmos_P4_Debug CMakeFiles/Algoritmos_P4.dir/main.c.o CMakeFiles/Algoritmos_P4.dir/tiempos.c.o CMakeFiles/Algoritmos_P4.dir/monticulos.c.o
   FLAGS = -g
+  LINK_LIBRARIES = -lm
   OBJECT_DIR = CMakeFiles/Algoritmos_P4.dir
   POST_BUILD = :
   PRE_LINK = :
