@@ -24,11 +24,11 @@ void hundir(pmonticulo m,int i) {
         hd = 2 * i + 2;
         j = i;
 
-        if (hd < m->ultimo && m->vector[hd] > m->vector[i])
+        if (hd <= m->ultimo && m->vector[hd] < m->vector[i])
             i = hd;
-        if (hi < m->ultimo && m->vector[hi] > m->vector[i])
+        if (hi <= m->ultimo && m->vector[hi] < m->vector[i])
             i = hi;
-        intercambiar(&m->vector[hi],&m->vector[i]);
+        intercambiar(&m->vector[j],&m->vector[i]);
     }while (i != j);
 
 }
@@ -52,7 +52,7 @@ void quitarMenor(pmonticulo m) {
     }else {
         m->vector[0] = m->vector[m->ultimo];
         m->ultimo--;
-        if(m->ultimo > -1) hundir(m,0);
+        if(m->ultimo >= 0) hundir(m,0);
     }
 }
 int consultarMenor(const pmonticulo m) {
@@ -69,15 +69,14 @@ void crearMonticulo(pmonticulo m,int v[],int n) {
     }
 }
 void OrdenarPorMonticulos(int v[],int n) {
-    pmonticulo m;
+    struct monticulo m;
     int i;
-    m = malloc(sizeof (struct monticulo));
-    iniMonticulo(m);
-    crearMonticulo(m,v,n);
+
+    iniMonticulo(&m);
+    crearMonticulo(&m,v,n);
 
     for(i = 0; i < n; i++) {
-        v[i] = consultarMenor(m);
-        quitarMenor(m);
+        v[i] = consultarMenor(&m);
+        quitarMenor(&m);
     }
-    free(m);
 }
