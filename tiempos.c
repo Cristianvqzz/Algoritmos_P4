@@ -147,7 +147,7 @@ double crear_time_bajo(int n,int k,void (*inicializar) (int v[],int n)) {
     ta = microsegundos();
     for (int i = 0; i < k; i++) {
         inicializar(v,n);
-        //iniMonticulo(m);
+        iniMonticulo(m);
         for (int j = 0; j < n; j++) {
             crearMonticulo(m,v,n);
         }
@@ -163,7 +163,7 @@ double crear_time_bajo(int n,int k,void (*inicializar) (int v[],int n)) {
     ta = microsegundos();
     for (int i = 0; i < k; i++) {
         inicializar(v,n);
-        //iniMonticulo(m);
+        iniMonticulo(m);
     }
     tb = microsegundos();
     t2 = tb - ta;
@@ -187,7 +187,7 @@ double crear_time(int n,int k,void (*inicializar) (int v[],int n)) {
     m = malloc(sizeof(struct monticulo));
 
     inicializar(v,n);
-    //iniMonticulo(m);
+    iniMonticulo(m);
     t1 = microsegundos();
     for (int i = 0; i < n; i++) {
         crearMonticulo(m,v,n);

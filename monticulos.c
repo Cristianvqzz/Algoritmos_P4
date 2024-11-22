@@ -11,9 +11,9 @@ void intercambiar(int* i,int* j) {
 }
 void flotar(pmonticulo m,int i) {
 
-    while(i > 0 && m->vector[i-1/2] > m->vector[i]) {
-        intercambiar(&m->vector[i-1/2],&m->vector[i]);
-        i = i-1/2;
+    while(i > 0 && m->vector[(i-1)/2] > m->vector[i]) {
+        intercambiar(&m->vector[(i-1)/2],&m->vector[i]);
+        i = (i-1)/2;
     }
 }
 void hundir(pmonticulo m,int i) {
@@ -64,7 +64,7 @@ void crearMonticulo(pmonticulo m,int v[],int n) {
         m->vector[i] = v[i];
     }
     m->ultimo = n-1;
-    for(i = (TAM-1)/2; i >= 0; i--) {
+    for(i = (m->ultimo-1)/2; i >= 0; i--) {
         hundir(m,i);
     }
 }
