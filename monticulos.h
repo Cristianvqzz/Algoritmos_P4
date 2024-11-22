@@ -1,7 +1,5 @@
-//
-// Created by daortiz on 15/11/24.
-//
-
+//Daniel Ortiz Sierra daniel.ortiz@udc.es
+//Cristian Vázquez Seijas cristian.vazquez.seijas@udc.es
 #ifndef MONTICULOS_H
 #define MONTICULOS_H
 
